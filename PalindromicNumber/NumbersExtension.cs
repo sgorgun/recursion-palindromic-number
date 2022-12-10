@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace PalindromicNumberTask
 {
@@ -15,7 +15,29 @@ namespace PalindromicNumberTask
         /// <exception cref="ArgumentException"> Thrown when source number is less than zero. </exception>
         public static bool IsPalindromicNumber(int number)
         {
-            throw new NotImplementedException("You need to implement this method.");
+            if (number < 0)
+            {
+                throw new ArgumentException($"{nameof(number)} is less than zero.", nameof(number));
+            }
+
+            int tempNumber = ReverseNumber(number, 0);
+            if (tempNumber == number)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static int ReverseNumber(int number, int tempNumber)
+        {
+            if (number == 0)
+            {
+                return tempNumber;
+            }
+
+            tempNumber = (tempNumber * 10) + (number % 10);
+            return ReverseNumber(number / 10, tempNumber);
         }
     }
 }
