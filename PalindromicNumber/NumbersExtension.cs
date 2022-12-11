@@ -21,12 +21,7 @@ namespace PalindromicNumberTask
             }
 
             int tempNumber = ReverseNumber(number, 0);
-            if (tempNumber == number)
-            {
-                return true;
-            }
-
-            return false;
+            return tempNumber == number;
         }
 
         private static int ReverseNumber(int number, int tempNumber)
